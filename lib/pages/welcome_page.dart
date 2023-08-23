@@ -2,6 +2,8 @@ import 'dart:ffi';
 
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:travel_flutter_app/cubit/app_cubits.dart';
 
 import '../misc/colors.dart';
 import '../widgets/app_font.dart';
@@ -70,7 +72,15 @@ class _WelcomePageState extends State<WelcomePage> {
                             ),
                           ),
                           SizedBox(height: 70,),
-                          ResponsiveButton(width: 100,),
+                          GestureDetector(
+                            onTap: (){
+                              BlocProvider.of<AppCubits>(context).getData();
+                            },
+                            child: Container(
+                              width: 120,
+                                child: Row(children: [ResponsiveButton(width: 100,)])
+                            ),
+                          ),
                         ],
                       ),
                       Column(children: List.generate(3, (indexDots) {
