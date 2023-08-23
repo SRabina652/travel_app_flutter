@@ -18,7 +18,7 @@ class AppFont extends StatelessWidget {
         TextStyle(
           fontSize: size,
           color: color,
-          letterSpacing: 2,
+          letterSpacing: 1,
         )
     ),
     );
