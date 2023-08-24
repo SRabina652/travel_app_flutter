@@ -36,7 +36,7 @@ class _HomePageState extends State<HomePage> with TickerProviderStateMixin {
           if(state is LoadedState){
             var info= state.places;
             return  Padding(
-              padding: const EdgeInsets.fromLTRB(20, 40.0, 20.0, 0),
+              padding: const EdgeInsets.fromLTRB(20, 80.0, 20.0, 0),
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
@@ -95,7 +95,7 @@ class _HomePageState extends State<HomePage> with TickerProviderStateMixin {
                   ),
                   Container(
                     padding: EdgeInsets.only(left: 10),
-                    height: 300,
+                    height: 330,
                     width: double.maxFinite,
                     child: Expanded(
                       child: TabBarView(
@@ -105,16 +105,21 @@ class _HomePageState extends State<HomePage> with TickerProviderStateMixin {
                             itemCount: info.length,
                             scrollDirection: Axis.horizontal,
                             itemBuilder: (BuildContext context, int index) {
-                              return Container(
-                                width: 200,
-                                height: 300,
-                                margin: EdgeInsets.only(right: 10, top: 10),
-                                decoration: BoxDecoration(
-                                  borderRadius: BorderRadius.circular(20),
-                                  color: Colors.white,
-                                  image: DecorationImage(
-                                    image: NetworkImage("http://mark.bslmeiyu.com/uploads/" + info[index].img),
-                                    fit: BoxFit.fill,
+                              return GestureDetector(
+                                onTap: (){
+                                  BlocProvider.of<AppCubits>(context).DetailPage(info[index]);
+                                },
+                                child: Container(
+                                  width: 200,
+                                  height: 330,
+                                  margin: EdgeInsets.only(right: 10, top: 20),
+                                  decoration: BoxDecoration(
+                                    borderRadius: BorderRadius.circular(20),
+                                    color: Colors.white,
+                                    image: DecorationImage(
+                                      image: NetworkImage("http://mark.bslmeiyu.com/uploads/" + info[index].img),
+                                      fit: BoxFit.fill,
+                                    ),
                                   ),
                                 ),
                               );
